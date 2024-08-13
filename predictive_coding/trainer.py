@@ -69,7 +69,7 @@ class Trainer:
 
         return history
 
-    def train(self, device="cuda:0"):
+    def train(self, device="cpu"):
         self.model.train()
         with tqdm(self.train_dataset) as t:
             for batch_idx, batch in enumerate(t):
@@ -99,7 +99,7 @@ class Trainer:
 
         return loss.item()
 
-    def validate(self, device="cuda:0", num_batch=10):
+    def validate(self, device="cpu", num_batch=10):
         self.model.eval()
         loss = 0
         with torch.no_grad():
